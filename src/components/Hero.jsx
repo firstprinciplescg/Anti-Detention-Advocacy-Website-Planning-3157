@@ -13,12 +13,14 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
-              Education & Action Against
-              <span className="text-red-600 block">Concentration Camps</span>
+              History Doesn't Repeat,
+              <span className="text-red-600 block">But It's Rhyming Again</span>
             </h1>
             <p className="text-xl text-gray-600 mt-6 leading-relaxed">
-              Understanding the economic, social, and moral failures of detention facilities 
-              and mass incarceration systems that violate human dignity and rights.
+              From Japanese internment to today's detention centers, America keeps reaching for 
+              the same failed solution. Let's examine how these facilities drain our economy, 
+              fracture our communities, and challenge our most fundamental values—all while 
+              failing to solve the problems they claim to address.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <motion.a
@@ -27,7 +29,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Learn More
+                Get the Facts
               </motion.a>
               <motion.a
                 href="#action"
