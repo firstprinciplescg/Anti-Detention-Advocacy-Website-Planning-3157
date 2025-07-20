@@ -34,6 +34,9 @@ const Footer = () => {
 
   const quickLinks = [
     { label: 'Education', href: '#education' },
+    { label: 'About', href: '#about' },
+    { label: 'Numbers', href: '#numbers' },
+    { label: 'History', href: '#history' },
     { label: 'Take Action', href: '#action' },
     { label: 'Subscribe', href: '#newsletter' }
   ];

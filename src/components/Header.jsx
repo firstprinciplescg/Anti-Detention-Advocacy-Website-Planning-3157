@@ -15,6 +15,9 @@ const Header = () => {
   
   const navItems = [
     { label: 'Education', href: '#education' },
+    { label: 'About', href: '#about' },
+    { label: 'Numbers', href: '#numbers' },
+    { label: 'History', href: '#history' },
     { label: 'Take Action', href: '#action' },
     { label: 'Subscribe', href: '#newsletter' }
   ];
@@ -36,13 +39,13 @@ const Header = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => (
               <motion.a
                 key={item.label}
                 href={item.href}
                 onClick={handleAnchorClick}
-                className="text-gray-700 hover:text-red-600 font-medium transition-colors"
+                className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -60,7 +63,7 @@ const Header = () => {
               >
                 <Link
                   to="/admin"
-                  className="flex items-center space-x-1 text-gray-700 hover:text-red-600 font-medium transition-colors"
+                  className="flex items-center space-x-1 text-gray-700 hover:text-red-600 font-medium transition-colors text-sm"
                 >
                   <SafeIcon icon={FiSettings} className="w-4 h-4" />
                   <span>Admin</span>

@@ -13,6 +13,9 @@ import ActionSection from './components/ActionSection'
 import Newsletter from './components/Newsletter'
 import Footer from './components/Footer'
 import ContentRenderer from './components/ContentRenderer'
+import AboutSection from './components/AboutSection'
+import NumbersSection from './components/NumbersSection'
+import HistorySection from './components/HistorySection'
 
 // Custom hooks
 import { useScrollToHash } from './hooks/useScrollToHash'
@@ -45,6 +48,15 @@ function App() {
                 <Hero />
                 <div id="education">
                   <EducationSection />
+                </div>
+                <div id="about">
+                  <AboutSection />
+                </div>
+                <div id="numbers">
+                  <NumbersSection />
+                </div>
+                <div id="history">
+                  <HistorySection />
                 </div>
                 <div id="action">
                   <ActionSection />
