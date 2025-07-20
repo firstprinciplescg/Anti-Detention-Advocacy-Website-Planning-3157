@@ -4,12 +4,14 @@ import SafeIcon from '../common/SafeIcon';
 import * as FiIcons from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useAnchorLinkHandler } from '../hooks/useScrollToHash';
 
 const { FiMenu, FiX, FiSettings } = FiIcons;
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user } = useAuth();
+  const handleAnchorClick = useAnchorLinkHandler();
   
   const navItems = [
     { label: 'Education', href: '#education' },
@@ -21,7 +23,7 @@ const Header = () => {
     <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <motion.div
+          <motion.div 
             className="flex items-center space-x-2"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -39,6 +41,7 @@ const Header = () => {
               <motion.a
                 key={item.label}
                 href={item.href}
+                onClick={handleAnchorClick}
                 className="text-gray-700 hover:text-red-600 font-medium transition-colors"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -47,7 +50,7 @@ const Header = () => {
                 {item.label}
               </motion.a>
             ))}
-            
+
             {/* Admin Link if user is logged in */}
             {user && (
               <motion.div
@@ -68,7 +71,10 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            <SafeIcon icon={isMenuOpen ? FiX : FiMenu} className="w-6 h-6 text-gray-700" />
+            <SafeIcon 
+              icon={isMenuOpen ? FiX : FiMenu} 
+              className="w-6 h-6 text-gray-700" 
+            />
           </button>
         </div>
 
@@ -84,13 +90,16 @@ const Header = () => {
               <a
                 key={item.label}
                 href={item.href}
+                onClick={(e) => {
+                  handleAnchorClick(e);
+                  setIsMenuOpen(false);
+                }}
                 className="block py-2 text-gray-700 hover:text-red-600 font-medium"
-                onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </a>
             ))}
-            
+
             {/* Admin Link if user is logged in */}
             {user && (
               <Link

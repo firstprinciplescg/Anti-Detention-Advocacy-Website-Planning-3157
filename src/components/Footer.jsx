@@ -2,10 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import SafeIcon from '../common/SafeIcon';
 import * as FiIcons from 'react-icons/fi';
+import { useAnchorLinkHandler } from '../hooks/useScrollToHash';
 
 const { FiExternalLink, FiMail, FiTwitter, FiFacebook } = FiIcons;
 
 const Footer = () => {
+  const handleAnchorClick = useAnchorLinkHandler();
+  
   const resources = [
     {
       title: "ACLU",
@@ -40,7 +43,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
-          <motion.div
+          <motion.div 
             className="md:col-span-1"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +59,7 @@ const Footer = () => {
             <p className="text-gray-400 mb-6">
               Education and action for a more just immigration system.
             </p>
-            
+
             {/* Social Links */}
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -82,8 +85,9 @@ const Footer = () => {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
+                  <a 
+                    href={link.href} 
+                    onClick={handleAnchorClick}
                     className="text-gray-400 hover:text-white transition-colors"
                   >
                     {link.label}
@@ -117,10 +121,7 @@ const Footer = () => {
                 >
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="font-semibold">{resource.title}</h4>
-                    <SafeIcon 
-                      icon={FiExternalLink} 
-                      className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" 
-                    />
+                    <SafeIcon icon={FiExternalLink} className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
                   </div>
                   <p className="text-sm text-gray-400">{resource.description}</p>
                 </motion.a>
@@ -140,7 +141,6 @@ const Footer = () => {
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
             © 2024 No Concentration Camps. Educational content for civic engagement.
           </p>
-          
           <div className="flex items-center space-x-6 text-sm text-gray-400">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Use</a>

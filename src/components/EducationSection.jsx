@@ -3,10 +3,13 @@ import { motion } from 'framer-motion';
 import SafeIcon from '../common/SafeIcon';
 import * as FiIcons from 'react-icons/fi';
 import HandDrawnIllustration from './HandDrawnIllustration';
+import { useAnchorLinkHandler } from '../hooks/useScrollToHash';
 
 const { FiDollarSign, FiUsers, FiHeart } = FiIcons;
 
 const EducationSection = () => {
+  const handleAnchorClick = useAnchorLinkHandler();
+  
   const sections = [
     {
       icon: FiDollarSign,
@@ -50,9 +53,9 @@ const EducationSection = () => {
   ];
 
   return (
-    <section id="education" className="py-20 bg-white">
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -81,11 +84,9 @@ const EducationSection = () => {
                 <div className={`inline-flex items-center justify-center w-16 h-16 ${section.bgColor} rounded-full mb-6`}>
                   <SafeIcon icon={section.icon} className={`w-8 h-8 ${section.color}`} />
                 </div>
-                
                 <h3 className="text-3xl font-bold text-gray-900 mb-6">
                   {section.title}
                 </h3>
-                
                 <div className="space-y-4">
                   {section.content.map((point, pointIndex) => (
                     <motion.div
@@ -102,7 +103,6 @@ const EducationSection = () => {
                   ))}
                 </div>
               </div>
-              
               <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
                 <HandDrawnIllustration type={section.illustration} />
               </div>
@@ -123,11 +123,11 @@ const EducationSection = () => {
               The Math Doesn't Add Up
             </h3>
             <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
-              When a policy fails economically, socially, and morally while costing taxpayers billions, 
-              it's time to demand better solutions from our representatives.
+              When a policy fails economically, socially, and morally while costing taxpayers billions, it's time to demand better solutions from our representatives.
             </p>
             <motion.a
               href="#action"
+              onClick={handleAnchorClick}
               className="inline-flex items-center justify-center bg-red-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-red-700 transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

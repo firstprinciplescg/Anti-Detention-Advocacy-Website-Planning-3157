@@ -14,10 +14,20 @@ import Newsletter from './components/Newsletter'
 import Footer from './components/Footer'
 import ContentRenderer from './components/ContentRenderer'
 
+// Custom hooks
+import { useScrollToHash } from './hooks/useScrollToHash'
+
+// ScrollToTop component to handle navigation
+const ScrollToTop = () => {
+  useScrollToHash();
+  return null;
+};
+
 function App() {
   return (
     <AuthProvider>
       <Router>
+        <ScrollToTop />
         <div className="min-h-screen bg-white">
           <Routes>
             {/* Admin Routes */}
@@ -33,8 +43,12 @@ function App() {
               <>
                 <Header />
                 <Hero />
-                <EducationSection />
-                <ActionSection />
+                <div id="education">
+                  <EducationSection />
+                </div>
+                <div id="action">
+                  <ActionSection />
+                </div>
                 
                 {/* Dynamic Content Section - Additional content managed via admin */}
                 <section className="py-12 bg-white">
@@ -51,7 +65,9 @@ function App() {
                   </div>
                 </section>
                 
-                <Newsletter />
+                <div id="newsletter">
+                  <Newsletter />
+                </div>
                 <Footer />
               </>
             } />

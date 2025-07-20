@@ -2,10 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import SafeIcon from '../common/SafeIcon';
 import * as FiIcons from 'react-icons/fi';
+import { useAnchorLinkHandler } from '../hooks/useScrollToHash';
 
 const { FiPhone, FiMail, FiMapPin, FiExternalLink } = FiIcons;
 
 const ActionSection = () => {
+  const handleAnchorClick = useAnchorLinkHandler();
+  
   const actionItems = [
     {
       icon: FiMapPin,
@@ -40,9 +43,9 @@ const ActionSection = () => {
   ];
 
   return (
-    <section id="action" className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -71,15 +74,12 @@ const ActionSection = () => {
               <div className="flex items-center justify-center w-12 h-12 bg-red-100 rounded-lg mb-4">
                 <SafeIcon icon={item.icon} className="w-6 h-6 text-red-600" />
               </div>
-              
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 {item.title}
               </h3>
-              
               <p className="text-gray-600 mb-4 leading-relaxed">
                 {item.description}
               </p>
-              
               <motion.a
                 href={item.link}
                 target="_blank"
@@ -106,11 +106,9 @@ const ActionSection = () => {
           <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
             Your Conversation Starter Kit
           </h3>
-          
           <p className="text-lg text-gray-600 mb-8 text-center max-w-3xl mx-auto">
             Whether you're calling, writing, or meeting in person, these evidence-based talking points help you sound informed and focused on solutions.
           </p>
-          
           <div className="grid md:grid-cols-2 gap-6">
             {talkingPoints.map((point, index) => (
               <motion.div
@@ -128,7 +126,6 @@ const ActionSection = () => {
               </motion.div>
             ))}
           </div>
-          
           <motion.div
             className="mt-8 pt-8 border-t border-gray-200"
             initial={{ opacity: 0 }}
@@ -139,8 +136,7 @@ const ActionSection = () => {
             <div className="bg-blue-50 rounded-lg p-6">
               <h4 className="font-bold text-gray-900 mb-2">Pro Tip:</h4>
               <p className="text-gray-700">
-                Personal stories are powerful, but data wins debates. Lead with the economics, 
-                follow with the human impact, and always end with a specific ask for action.
+                Personal stories are powerful, but data wins debates. Lead with the economics, follow with the human impact, and always end with a specific ask for action.
               </p>
             </div>
           </motion.div>
@@ -157,18 +153,15 @@ const ActionSection = () => {
           <h3 className="text-2xl font-bold text-gray-900 mb-6">
             It's Working
           </h3>
-          
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-green-50 rounded-lg p-6">
               <div className="text-3xl font-bold text-green-600 mb-2">8</div>
               <p className="text-gray-700">States have banned or restricted private detention</p>
             </div>
-            
             <div className="bg-blue-50 rounded-lg p-6">
               <div className="text-3xl font-bold text-blue-600 mb-2">200+</div>
               <p className="text-gray-700">Cities have divested from detention contractors</p>
             </div>
-            
             <div className="bg-purple-50 rounded-lg p-6">
               <div className="text-3xl font-bold text-purple-600 mb-2">$2B</div>
               <p className="text-gray-700">In contracts canceled due to public pressure</p>
