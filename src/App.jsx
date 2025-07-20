@@ -22,30 +22,39 @@ function App() {
           <Routes>
             {/* Admin Routes */}
             <Route path="/admin/login" element={<LoginForm />} />
-            <Route
-              path="/admin"
-              element={
-                <AdminRoute>
-                  <AdminPanel />
-                </AdminRoute>
-              }
-            />
+            <Route path="/admin" element={
+              <AdminRoute>
+                <AdminPanel />
+              </AdminRoute>
+            } />
             
             {/* Public Site */}
-            <Route
-              path="/"
-              element={
-                <>
-                  <Header />
-                  <Hero />
-                  <EducationSection />
-                  <ActionSection />
-                  <ContentRenderer />
-                  <Newsletter />
-                  <Footer />
-                </>
-              }
-            />
+            <Route path="/" element={
+              <>
+                <Header />
+                <Hero />
+                <EducationSection />
+                <ActionSection />
+                
+                {/* Dynamic Content Section - Additional content managed via admin */}
+                <section className="py-12 bg-white">
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-8">
+                      <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                        Additional Resources
+                      </h2>
+                      <p className="text-lg text-gray-600">
+                        In-depth information and context for understanding the full picture
+                      </p>
+                    </div>
+                    <ContentRenderer />
+                  </div>
+                </section>
+                
+                <Newsletter />
+                <Footer />
+              </>
+            } />
           </Routes>
         </div>
       </Router>
